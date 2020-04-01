@@ -85,7 +85,7 @@ while gameRun:
     if playerStanding == True:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP:
-                player_velocity = -12
+                player_velocity = -14
                 playerJumping = True
                 playerStanding = False
     elif playerJumping == True:
@@ -96,11 +96,13 @@ while gameRun:
             playerJumping = False
             playerStanding = True
 
+    playerY += player_velocity
+
     # Batman Jumping
     if enemyStanding == True:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_w:
-                enemy_velocity = -12
+                enemy_velocity = -14
                 enemyJumping = True
                 enemyStanding = False
     elif enemyJumping == True:
@@ -111,7 +113,7 @@ while gameRun:
             enemyJumping = False
             enemyStanding = True
 
-    playerY += player_velocity
+   
     enemyY += enemy_velocity
 
     playerX += playerX_change
