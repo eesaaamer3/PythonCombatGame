@@ -2,7 +2,7 @@ import pygame
 import sys
 
 class IronMan:
-    def __init__(self, x, y, x_change, velocity, standing, jumping):
+    def __init__(self, x, y, x_change, velocity, standing, jumping, flying):
         super().__init__()
         self.x = x
         self.y = y
@@ -10,9 +10,18 @@ class IronMan:
         self.velocity = velocity 
         self.standing = standing
         self.jumping = jumping
+        self.flying = flying
 
-        self.playerImg = pygame.image.load("Images/ironman.png")
-        self.finalPlayer = pygame.transform.scale(self.playerImg, (100, 100))
+        self.playerImg = pygame.image.load("Images/IronMan-Standing.png")
+        self.finalPlayer = pygame.transform.scale(self.playerImg, (75, 100))
+
+        self.flyingAnimation = pygame.image.load("Images/IronMan-Flying.png")
+        self.JumpingAnimation = pygame.image.load("Images/IronMan-Jumping.png")
+        
+
+        self.reverseFlyingAnimation = pygame.transform.flip(self.flyingAnimation, True, False)
+        
+        #self.PunchAnimation = pygame.image.load()
 
 class Batman:
     def __init__(self, x, y, x_change, velocity, standing, jumping):
@@ -27,7 +36,8 @@ class Batman:
         self.enemyImg = pygame.image.load("Images/batman.png")
         self.finalEnemy = pygame.transform.scale(self.enemyImg, (150, 150))
 
-    
+
+        
         
 
 
