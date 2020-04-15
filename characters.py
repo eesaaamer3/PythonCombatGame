@@ -33,8 +33,8 @@ class Batman:
         self.standing = standing
         self.jumping = jumping
 
-        self.enemyImg = pygame.image.load("Images/batman.png")
-        self.finalEnemy = pygame.transform.scale(self.enemyImg, (150, 150))
+        self.enemyImg = pygame.image.load("Images/Batman_standing.png")
+        self.finalEnemy = pygame.transform.scale(self.enemyImg, (100, 100))
 
 
         

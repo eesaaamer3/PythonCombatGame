@@ -11,9 +11,11 @@ class GameScreen:
 
         self.icon = pygame.image.load('Images/superhero.png')
 
+        self.icon_transformed = pygame.transform.scale(self.icon, (100, 100))
+
         self.background = pygame.image.load('Images/background.png')
 
-        pygame.display.set_icon(self.icon)      
+        pygame.display.set_icon(self.icon_transformed)      
 
         pygame.display.set_caption("Hero Combat")  
         
