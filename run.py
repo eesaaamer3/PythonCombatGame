@@ -39,14 +39,16 @@ class GameScreen:
             
             # Player controls for Iron Man 
             if event.type == pygame.KEYDOWN:
+                #Iron Man moving to the left 
                 if event.key == pygame.K_LEFT:
-                    player.x_change = -4
+                    player.x_change = -2
                     player.finalPlayer = player.reverseFlyingAnimation
                     player.flying = True
+                # Iron man moving to the right
                 if event.key == pygame.K_RIGHT:
                     player.finalPlayer = player.flyingAnimation
                     player.flying = True
-                    player.x_change = 4
+                    player.x_change = 2
 
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
@@ -68,10 +70,10 @@ class GameScreen:
                         player.finalPlayer = player.JumpingAnimation
             elif player.jumping == True:
                 if player.flying == False:
-                    player.velocity += 0.5
+                    player.velocity += 0.41
                 elif player.flying == True:
-                    player.velocity += 0.4
-                if player.y > 275:
+                    player.velocity += 0.1
+                if player.y > 280:
                     player.velocity = 0
                     player.y = 280
                     player.jumping = False
