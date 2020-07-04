@@ -17,6 +17,8 @@ class IronMan:
 
         self.flyingAnimation = pygame.image.load("Images/IronMan-Flying.png")
         self.JumpingAnimation = pygame.image.load("Images/IronMan-Jumping.png")
+
+        self.shootingAnimation = pygame.image.load("Images/Iron-man-shooting.png")
         
 
         self.reverseFlyingAnimation = pygame.transform.flip(self.flyingAnimation, True, False)
@@ -33,7 +35,7 @@ class Batman:
         self.standing = standing
         self.jumping = jumping
 
-        self.enemyImg = pygame.image.load("Images/Batman_standing.png")
+        self.enemyImg = pygame.image.load("Images/batman.png")
         self.finalEnemy = pygame.transform.scale(self.enemyImg, (100, 100))
 
 

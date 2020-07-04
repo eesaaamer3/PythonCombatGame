@@ -56,18 +56,22 @@ class GameScreen:
                     player.flying = False
                     player.finalPlayer = player.playerImg
 
+            # Iron man stays on the map
             if player.x < 0:
                 player.x = 0
             elif player.x >= 600:
                 player.x = 600 
 
+            # Iron man jumping
             if player.standing == True and player.flying == False:
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_UP:
+                        # Gravity on Iron man
                         player.velocity = -14
                         player.jumping = True
                         player.standing = False
                         player.finalPlayer = player.JumpingAnimation
+            # Ensures iron man doesn't fly away when he is jumping
             elif player.jumping == True:
                 if player.flying == False:
                     player.velocity += 0.41
@@ -86,9 +90,9 @@ class GameScreen:
             # Player controls for Batman 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_a:
-                    enemy.x_change = -4
+                    enemy.x_change = -2
                 if event.key == pygame.K_d:
-                    enemy.x_change = 4
+                    enemy.x_change = 2
                 
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_a or event.key == pygame.K_d:
