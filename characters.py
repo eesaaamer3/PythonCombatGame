@@ -23,7 +23,6 @@ class IronMan:
 
         self.reverseFlyingAnimation = pygame.transform.flip(self.flyingAnimation, True, False)
         
-        #self.PunchAnimation = pygame.image.load()
 
 class Batman:
     def __init__(self, x, y, x_change, velocity, standing, jumping):

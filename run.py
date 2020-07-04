@@ -1,6 +1,7 @@
 import pygame
 import sys
 from characters import IronMan, Batman
+import time
 
 class GameScreen:
 
@@ -56,6 +57,16 @@ class GameScreen:
                     player.flying = False
                     player.finalPlayer = player.playerImg
 
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_DOWN:
+                    player.y = 290
+                    player.finalPlayer = player.shootingAnimation
+
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_DOWN:
+                    player.y = 280
+                    player.finalPlayer = player.playerImg
+            
             # Iron man stays on the map
             if player.x < 0:
                 player.x = 0
@@ -71,7 +82,7 @@ class GameScreen:
                         player.jumping = True
                         player.standing = False
                         player.finalPlayer = player.JumpingAnimation
-            # Ensures iron man doesn't fly away when he is jumping
+            # Ensures iron man doesn't fly away/go past the roof when he is jumping
             elif player.jumping == True:
                 if player.flying == False:
                     player.velocity += 0.41
