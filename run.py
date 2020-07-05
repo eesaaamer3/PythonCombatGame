@@ -1,13 +1,12 @@
 import pygame
 import sys
-from characters import IronMan, Batman, Projectile
+from characters import *
 import time
 
 class GameScreen:
 
     def __init__(self):
         pygame.init()
-
         self.screen = pygame.display.set_mode((700,400))
 
         self.icon = pygame.image.load('Images/superhero.png')
@@ -58,19 +57,30 @@ class GameScreen:
                     player.flying = False
                     player.finalPlayer = player.playerImg
 
+            # Iron man shooting projectile
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_DOWN:
                     player.y = 290
                     player_projectile.x = player.x + 70
                     player_projectile.y = player.y + 15
-                    player_projectile.shoot()
+                    player_projectile.shooting = True
                     player.finalPlayer = player.shootingAnimation
 
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_DOWN:
                     player.y = 280
+                    player_projectile.x = -100
+                    player_projectile.y = 100
                     player.finalPlayer = player.playerImg
+                    player_projectile.shooting = False
             
+            if player_projectile.x > 600:
+                player_projectile.x_change = 0
+            elif player_projectile.x < 600 and player_projectile.shooting == True:
+                player_projectile.x_change += 5
+                player_projectile.x += player_projectile.x_change
+
+    
             # Iron man stays on the map
             if player.x < 0:
                 player.x = 0
@@ -134,6 +144,7 @@ class GameScreen:
 
             enemy.y += enemy.velocity
             enemy.x += enemy.x_change
+
             self.update_screen(player, enemy, player_projectile)
             pygame.display.update()
 
@@ -141,5 +152,5 @@ if __name__ == "__main__":
     game = GameScreen()
     ironMan = IronMan(20, 275, 0, 0, True, False, False)
     batman = Batman(550, 240, 0, 0, True, False)
-    player_projectile = Projectile(-100, 100, 0)
+    player_projectile = Projectile(-100, 100, 0, False)
     game.run_game(ironMan, batman, player_projectile)

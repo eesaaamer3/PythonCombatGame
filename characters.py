@@ -37,18 +37,17 @@ class Batman:
         self.finalEnemy = pygame.transform.scale(self.enemyImg, (100, 100))
 
 class Projectile:
-    def __init__(self, x, y, x_change):
-        super().__init__()
+    def __init__(self, x, y, x_change, shooting):
+        #super().__init__()
         self.x = x
         self.y = y
         self.x_change = x_change
-
         self.playerProjectile = pygame.image.load("Images/Iron-man-projectile.png")
 
-        #self.enemyProjectile = pygame.image.load("")
+        self.shooting = shooting
+            
         
-        
-
+    
 
 
         
