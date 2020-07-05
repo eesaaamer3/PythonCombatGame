@@ -19,6 +19,7 @@ class IronMan:
         self.JumpingAnimation = pygame.image.load("Images/IronMan-Jumping.png")
 
         self.shootingAnimation = pygame.image.load("Images/Iron-man-shooting.png")
+        self.projectile = pygame.image.load("Images/Iron-man-projectile.png")
         
 
         self.reverseFlyingAnimation = pygame.transform.flip(self.flyingAnimation, True, False)
@@ -37,7 +38,14 @@ class Batman:
         self.enemyImg = pygame.image.load("Images/batman.png")
         self.finalEnemy = pygame.transform.scale(self.enemyImg, (100, 100))
 
+class Projectile:
+    def __init__(self, x, y, x_change):
+        self.x = x
+        self.y = y
+        self.x_change = x_change
 
+        self.playerProjectile = pygame.image.load("Images/Iron-man-projectile.png")
+        #self.enemyProjectile = pygame.image.load("")
         
         
 

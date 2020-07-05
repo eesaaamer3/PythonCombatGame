@@ -20,11 +20,12 @@ class GameScreen:
 
         pygame.display.set_caption("Hero Combat")  
         
-    def update_screen(self, player, enemy):
+    def update_screen(self, player, enemy, projectile):
         self.screen.fill((255, 255, 255))
         self.screen.blit(self.background, (0,0))
         self.screen.blit(player.finalPlayer, (player.x, player.y))
         self.screen.blit(enemy.finalEnemy, (enemy.x, enemy.y))
+        self.screen.blit(projectile.playerProjectile, (projectile.x, projectile.y))
 
     def run_game(self, player, enemy):
         while True:
