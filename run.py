@@ -1,6 +1,6 @@
 import pygame
 import sys
-from characters import IronMan, Batman
+from characters import IronMan, Batman, Projectile
 import time
 
 class GameScreen:
@@ -20,14 +20,14 @@ class GameScreen:
 
         pygame.display.set_caption("Hero Combat")  
         
-    def update_screen(self, player, enemy, projectile):
+    def update_screen(self, player, enemy, player_projectile):
         self.screen.fill((255, 255, 255))
         self.screen.blit(self.background, (0,0))
         self.screen.blit(player.finalPlayer, (player.x, player.y))
         self.screen.blit(enemy.finalEnemy, (enemy.x, enemy.y))
-        self.screen.blit(projectile.playerProjectile, (projectile.x, projectile.y))
+        self.screen.blit(player_projectile.playerProjectile, (player_projectile.x, player_projectile.y))
 
-    def run_game(self, player, enemy):
+    def run_game(self, player, enemy, player_projectile):
         while True:
 
             # Checks to see if game has been quit
@@ -61,6 +61,9 @@ class GameScreen:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_DOWN:
                     player.y = 290
+                    player_projectile.x = player.x + 70
+                    player_projectile.y = player.y + 15
+                    player_projectile.shoot()
                     player.finalPlayer = player.shootingAnimation
 
             if event.type == pygame.KEYUP:
@@ -131,12 +134,12 @@ class GameScreen:
 
             enemy.y += enemy.velocity
             enemy.x += enemy.x_change
-
-            self.update_screen(player, enemy)
+            self.update_screen(player, enemy, player_projectile)
             pygame.display.update()
 
 if __name__ == "__main__":
     game = GameScreen()
     ironMan = IronMan(20, 275, 0, 0, True, False, False)
     batman = Batman(550, 240, 0, 0, True, False)
-    game.run_game(ironMan, batman)
+    player_projectile = Projectile(-100, 100, 0)
+    game.run_game(ironMan, batman, player_projectile)
