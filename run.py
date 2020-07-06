@@ -7,6 +7,8 @@ class GameScreen:
 
     def __init__(self):
         pygame.init()
+        pygame.mixer.init()
+
         self.screen = pygame.display.set_mode((700,400))
 
         self.icon = pygame.image.load('Images/superhero.png')
@@ -14,6 +16,10 @@ class GameScreen:
         self.icon_transformed = pygame.transform.scale(self.icon, (100, 100))
 
         self.background = pygame.image.load('Images/background.png')
+
+        # Background music loader
+        pygame.mixer.music.load("Audio/Ken's Theme 8 Bit Remix - Street Fighter 2 (online-audio-converter.com).wav")
+        pygame.mixer.music.play(-1)
 
         pygame.display.set_icon(self.icon_transformed)      
 
@@ -61,9 +67,6 @@ class GameScreen:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_DOWN:
                     player.y = 290
-                    #player_projectile.x = player.x + 70
-                    #player_projectile.y = player.y + 15
-                    #player_projectile.shooting = True
                     player.finalPlayer = player.shootingAnimation
 
             if event.type == pygame.KEYUP:
