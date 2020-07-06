@@ -61,23 +61,25 @@ class GameScreen:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_DOWN:
                     player.y = 290
-                    player_projectile.x = player.x + 70
-                    player_projectile.y = player.y + 15
-                    player_projectile.shooting = True
+                    #player_projectile.x = player.x + 70
+                    #player_projectile.y = player.y + 15
+                    #player_projectile.shooting = True
                     player.finalPlayer = player.shootingAnimation
 
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_DOWN:
                     player.y = 280
-                    player_projectile.x = -100
-                    player_projectile.y = 100
+                    player_projectile.x = player.x + 70
+                    player_projectile.y = player.y + 15
+                    player_projectile.shooting = True
                     player.finalPlayer = player.playerImg
-                    player_projectile.shooting = False
             
-            if player_projectile.x > 600:
+            if player_projectile.x > 600 and player_projectile.shooting == True:
+                player_projectile.x = -100
                 player_projectile.x_change = 0
+                player_projectile.shooting = False
             elif player_projectile.x < 600 and player_projectile.shooting == True:
-                player_projectile.x_change += 5
+                player_projectile.x_change += 10
                 player_projectile.x += player_projectile.x_change
 
     
