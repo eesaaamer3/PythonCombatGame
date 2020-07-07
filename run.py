@@ -66,7 +66,8 @@ class GameScreen:
             # Iron man shooting projectile
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_DOWN:
-                    player.y = 290
+                    player.y = 290    
+                    pygame.mixer.Channel(0).play(pygame.mixer.Sound("Audio/iron-man-repulsor-beam.wav"))
                     player.finalPlayer = player.shootingAnimation
 
             if event.type == pygame.KEYUP:
