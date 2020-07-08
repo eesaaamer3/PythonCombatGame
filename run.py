@@ -114,6 +114,7 @@ class GameScreen:
                     player.velocity += 0.1
                 if player.y > 280:
                     player.velocity = 0
+                    pygame.mixer.Channel(1).play(pygame.mixer.Sound("Audio/iron-man-landing .wav"))
                     player.y = 280
                     player.jumping = False
                     player.standing = True
