@@ -9,6 +9,10 @@ class GameScreen:
         pygame.init()
         pygame.mixer.init()
 
+        # Sound Channels
+        # Channel 0 is used for Iron Man repulsor beam
+        # Channel 1 is used for Iron Man landing
+
         self.screen = pygame.display.set_mode((700,400))
 
         self.icon = pygame.image.load('Images/superhero.png')
