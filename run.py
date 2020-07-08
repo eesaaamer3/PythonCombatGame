@@ -53,11 +53,13 @@ class GameScreen:
                 #Iron Man moving to the left 
                 if event.key == pygame.K_LEFT:
                     player.x_change = -2
+                    #pygame.mixer.Channel(2).play(pygame.mixer.Sound("Audio/iron-man-flying.wav"))
                     player.finalPlayer = player.reverseFlyingAnimation
                     player.flying = True
                 # Iron man moving to the right
                 if event.key == pygame.K_RIGHT:
                     player.finalPlayer = player.flyingAnimation
+                    #pygame.mixer.Channel(3).play(pygame.mixer.Sound("Audio/iron-man-flying.wav"))
                     player.flying = True
                     player.x_change = 2
 
